@@ -12,9 +12,10 @@ import kr.bit.model.MemberVO;
 @WebServlet("/memberInsert.do")
 public class MemberInsertController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		// 1. parameter 수집(vO)
 		
+		request.setCharacterEncoding("utf-8");
+		
+		// 1. parameter 수집(vO)
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		String name = request.getParameter("name");
