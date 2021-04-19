@@ -7,7 +7,7 @@ public class MemberDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
-	// DB 연결객체 생성(TEST DB 접속 URL, user, password 필요)
+	// DB 연결(Connection)객체 생성(TEST DB 접속 URL, user, password 필요)
 	public void getConnect() {
 		String URL = "jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&serverTimezone=UTC";
 		String user = "root";
@@ -24,4 +24,32 @@ public class MemberDAO {
 		} 
 	}
 	
+	// insert
+	public int memberInsert(MemberVO vo) {
+		String SQL = "insert into member(id, pass, name, age, email, phone) values (?,?,?,?,?,?)";
+		getConnect();
+		int cnt = -1;
+		
+		// SQL 문장을 전송하는 객체 생성
+		try {
+			// 미리 Compile
+			ps = conn.prepareStatement(SQL);
+			// Setting
+			ps.setString(1, vo.getId());
+			ps.setString(2, vo.getPass());
+			ps.setString(3, vo.getName());
+			ps.setInt(4, vo.getAge());
+			ps.setString(5, vo.getEmail());
+			ps.setString(6, vo.getPhone());
+			
+			// 성공한 row의 수가 넘어온다. 성공시 1, 실패시 0
+			cnt = ps.executeUpdate(); // 전송(실행)
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// 성공여부 (1 or 0) return 
+		return cnt;
+	}
 }
