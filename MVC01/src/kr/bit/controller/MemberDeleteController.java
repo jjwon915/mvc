@@ -17,7 +17,7 @@ public class MemberDeleteController extends HttpServlet {
 		
 		MemberDAO dao = new MemberDAO();
 		int result = dao.memberDelete(number);
-		System.out.println(result);
+		// System.out.println(result);
 		if(result > 0) {
 			response.sendRedirect("/MVC01/memberList.do");
 		} else {
