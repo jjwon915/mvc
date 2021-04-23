@@ -10,3 +10,7 @@
 * WAS(Tomcat) : Controller(Servlet) + Model(Java) + DB(MySQL)
   - DB와 Model은 JDBC로 연결한다. 
   - Client가 요청을 보내면 Controller에서 요청을 받고, 처리는 Model에서 진행한 뒤 응답한다. 
+
+* redirect 
+  - response.sendRedirect("/MVC01/memberList.do");
+  - 서버가 다른 Controller에게 요청을 돌려서 응답하도록 하는 것을 의미한다. 따라서 앞의 코드에서는 memberListController가 응답하게 된다. 
