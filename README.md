@@ -14,3 +14,15 @@
 * redirect 
   - response.sendRedirect("/MVC01/memberList.do");
   - 서버가 다른 Controller에게 요청을 돌려서 응답하도록 하는 것을 의미한다. 따라서 앞의 코드에서는 memberListController가 응답하게 된다. 
+
+* JSP(Java Server Page) / Servlet(Servlet + let)
+  - Servlet은 100% 자바로 된 웹 프로그래밍
+  - JSP는 View / Servlet은 Controller
+  - JSP 구성요소 : HTML 태그요소 + 프로그래밍적 요소(<% %>) 혼합
+    - <%@ page %> : page 지시자, Tomcat server에게 jsp라고 알려준다.
+    - <%@ include %> : include 지시자
+    - <%@ taglib %> : tag lib 지시자
+    - <% %> : 스크립트릿, java 코드 사용
+    - <%= %> : 출력식
+    - <%! %> : java 함수 작성
+    - <%-- --%> : 주석
