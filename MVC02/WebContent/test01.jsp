@@ -14,6 +14,9 @@
 	for(int i = 1; i <= 100; i++){
 		sum += i;
 	}
+	 //JSP의 내장 객체(이미 만들어진 객체)
+	// request, response
+	// session, out, config, application, page, pageContext
 %>
 <!DOCTYPE html>
 <html>
@@ -29,4 +32,4 @@
 </tr>
 </table>
 </body>
-</html>
+</html>8
