@@ -1,8 +1,10 @@
 # mvc Model Project
+- 2021.04
+- 웹개발자로서 취준을 시작하며 MVC모델에 대해 제대로 이해하고 싶어 진행하게 되었다. 
 - MVC모델을 웹정보시스템프로젝트 강의를 들으며 배웠지만, 제대로 이해하지 못해 공부하기 위해 인프런 나프1탄 강의를 참고해 프로젝트를 진행했습니다. 
 
 1. MVC01 : Model과 Controller, DB를 이용하여 회원정보 관리 프로젝트를 구현했다. Model은 Business Logic을 처리하고, Controller는 사용자의 요청을 받아 Model에서 처리할 수 있도록 한다. MVC01 프로젝트를 진행하며 느낀 것은 Controller 즉, 서블릿으로 View를 구현하는 것은 정말 비효율적이라고 느꼈다. 사용자가 보낸 parameter의 값을 받아 처리하는 과정을 제대로 이해할 수 있게된 것 같다. 
-2. MVC02 : MVC01에서 구현한 기능들을 JSP만 이용해서 구현한 프로젝트이다. View에서 모든 Business Logic을 처리한다는 것 또한 비효율적이라고 생각이 되었다. 하지만 서블릿에서 모든 View를 구현했던 MVC01 프로젝트보다는 그나마 효율적으로 진화했다고 생각한다. 
+2. MVC02 : MVC01에서 구현한 기능들을 JSP만 이용해서 구현한 프로젝트이다. View에서 모든 Business Logic을 처리한다는 것 또한 비효율적이라고 생각이 되었다. 하지만 서블릿에서 모든 View를 구현했던 MVC01 프로젝트보다는 그나마 효율적으로 진화했다고 생각한다. Client에게 보여지지 않지만 처리를 담당하는 JSP인 Controller JSP와 Client에게 보여지는 JSP로 나눠서 구현했다.
 
 * Model : Java Class로 Business Logic 구현
 * View : JSP, client에게 보이는 부분.
@@ -31,3 +33,4 @@
     - <%= %> : 출력식
     - <%! %> : java 함수 작성
     - <%-- --%> : 주석
+  
