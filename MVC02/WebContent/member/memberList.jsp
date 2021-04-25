@@ -15,6 +15,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	function deleteFn(num){
+		location.href="memberDelete.jsp?num="+num; 
+	}
+</script>
 </head>
 <body>
 	<table class="table table-bordered">
@@ -35,7 +40,7 @@
 				<td><%= vo.getAge() %></td>
 				<td><%= vo.getEmail() %></td>
 				<td><%= vo.getPhone() %></td>
-				<td><input type="button" class="btn btn-danger" value="삭제" onclick="deleteFn(<%= vo.getNum() %>)'"/></td>
+				<td><input type="button" class="btn btn-danger" value="삭제" onclick="deleteFn(<%=vo.getNum()%>)"/></td>
 				</tr>
 			<% } %>
 		<tr>
