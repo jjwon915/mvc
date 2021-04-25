@@ -25,6 +25,7 @@
 			<td>나이</td>
 			<td>이메일</td>
 			<td>전화번호</td>
+			<td>삭제</td>
 		</tr>
 		<% for(MemberVO vo : list){ %>
 				<tr>
@@ -34,8 +35,12 @@
 				<td><%= vo.getAge() %></td>
 				<td><%= vo.getEmail() %></td>
 				<td><%= vo.getPhone() %></td>
+				<td><input type="button" class="btn btn-danger" value="삭제" onclick="deleteFn(<%= vo.getNum() %>)'"/></td>
 				</tr>
 			<% } %>
+		<tr>
+			<td colspan="8" align="right"><input type="button" class="btn btn-info" value="회원가입" onclick="location.href='memberRegister.html'"/></td>
+		</tr>
 	</table>
 </body>
 </html>
