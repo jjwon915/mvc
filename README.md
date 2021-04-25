@@ -33,4 +33,7 @@
     - <%= %> : 출력식
     - <%! %> : java 함수 작성
     - <%-- --%> : 주석
+ 
+* Model 1방식 : Model(Java) + View(JSP)
+* Model 2방식 : Model(Java) + View(JSP) + Controller(Servlet)
   
