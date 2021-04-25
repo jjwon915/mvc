@@ -6,8 +6,8 @@
 1. MVC01 : Model과 Controller를 이용하여 회원정보 관리 프로젝트를 구현했다. Model은 Business Logic을 처리하고, Controller는 사용자의 요청을 받아 Model에서 처리할 수 있도록 한다. MVC01 프로젝트를 진행하며 느낀 것은 Controller 즉, 서블릿으로 View를 구현하는 것은 정말 비효율적이라고 느꼈다. 사용자가 보낸 parameter의 값을 받아 처리하는 과정을 제대로 이해할 수 있게된 것 같다. 
 2. MVC02 : MVC01에서 구현한 기능들을 Model1방식인 JSP와 Model 이용해서 구현한 프로젝트이다. View에서 모든 Business Logic을 처리한다는 것 또한 비효율적이라고 생각이 되었다. 하지만 서블릿에서 모든 View를 구현했던 MVC01 프로젝트보다는 그나마 효율적으로 진화했다고 생각한다. Client에게 보여지지 않지만 처리를 담당하는 JSP인 Controller JSP와 Client에게 보여지는 JSP로 나눠서 구현했다.
 
-* Model : Java Class로 Business Logic 구현
-* View : JSP, client에게 보이는 부분.
+* Model : Java Class로 Business Logic을 구현하는 부분이다.
+* View : JSP, client에게 보이는 부분이다.
 * Controller : Servlet으로 Client가 보낸 요청을 받고 Parameter를 수집하는 작업을 한다. 
   - get방식 
     - 넘어가는 값이 모두 보인다. 따라서 보안에 취약하다. url로 서버에 넘기기 때문에 많은 양의 데이터를 넘기기는 어렵다. <a> 태그에서 많이 사용한다. get방식으로 넘길 때는 **querystring** 형태로 구성되어있으며 ?변수=값&변수=값&변수=값 이런 식이다. 공백이 있으면 안된다. 
