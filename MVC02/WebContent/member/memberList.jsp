@@ -35,7 +35,7 @@
 		<% for(MemberVO vo : list){ %>
 				<tr>
 				<td><%= vo.getNum() %></td>
-				<td><%= vo.getId() %></td>
+				<td><a href="memberContent.jsp?num=<%=vo.getNum()%>" style=color:black><%= vo.getId() %></a></td>
 				<td><%= vo.getPass() %></td>
 				<td><%= vo.getAge() %></td>
 				<td><%= vo.getEmail() %></td>
