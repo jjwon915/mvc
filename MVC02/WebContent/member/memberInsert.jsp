@@ -31,7 +31,7 @@
 		throw new ServletException("not insert");
 	}
 
-%>
+%>	
 <!DOCTYPE html>
 <html>
 <head>
