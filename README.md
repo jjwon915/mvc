@@ -35,4 +35,12 @@
  
 * Model 1방식 : Model(Java) + View(JSP)
 * Model 2방식 : Model(Java) + View(JSP) + Controller(Servlet)
-  
+
+* 동작방식
+  - Client가 요청하면 요청을 받는 것이 Controller(Servlet)이다. 
+  - Controller와 Model(java)이 연결되어있고 Model이 JDBC로 DB연동을 한다. 
+  - Controller가 바로 Client에게 응답하지 않고 View인 JSP에게 요청을 의뢰(**RequestDispatcher**)한다.
+  - JSP는 Controller가 Model을 통해 받은 Data를 가지고 만든 JSP를 Client에게 바로 주는 것이 아니라 Controller에게 응답한다.
+  - Controller는 JSP가 보낸 결과를 Client에게 응답한다.
+  - Controller와 JSP가 Data를 주고 받고 하는 것을 **Forward(Forwarding)**이라고 한다. 
+  - Controller가 가진 Data를 JSP가 가져가는 것은 **객체 바인딩**이라고 한다.
