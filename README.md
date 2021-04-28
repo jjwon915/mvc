@@ -43,4 +43,4 @@
   - JSP는 Controller가 Model을 통해 받은 Data를 가지고 만든 JSP를 Client에게 바로 주는 것이 아니라 Controller에게 응답한다.
   - Controller는 JSP가 보낸 결과를 Client에게 응답한다.
   - Controller와 JSP가 Data를 주고 받고 하는 것을 **Forward(Forwarding)** 라고 한다. 
-  - Controller가 가진 Data를 JSP가 가져가는 것은 **객체 바인딩**이라고 한다.
+  - Controller가 가진 Data를 JSP가 가져가는 것은 **객체 바인딩**이라고 한다. 객체를 특정 메모리에 연결시켰다는 의미이기 때문에 객체 바인딩이라고 한다. Controller는 setAttribute를 이용해 특정 메모리 공간에 Data를 넣어주고, 그 공간의 메모리를 JSP가 getAttribute를 이용해 가져간다. 
