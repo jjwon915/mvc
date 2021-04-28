@@ -42,5 +42,5 @@
   - Controller가 바로 Client에게 응답하지 않고 View인 JSP에게 요청을 의뢰(**RequestDispatcher**)한다.
   - JSP는 Controller가 Model을 통해 받은 Data를 가지고 만든 JSP를 Client에게 바로 주는 것이 아니라 Controller에게 응답한다.
   - Controller는 JSP가 보낸 결과를 Client에게 응답한다.
-  - Controller와 JSP가 Data를 주고 받고 하는 것을 **Forward(Forwarding)**이라고 한다. 
+  - Controller와 JSP가 Data를 주고 받고 하는 것을 **Forward(Forwarding)** 라고 한다. 
   - Controller가 가진 Data를 JSP가 가져가는 것은 **객체 바인딩**이라고 한다.
