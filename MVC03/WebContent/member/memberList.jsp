@@ -3,8 +3,9 @@
 <%@ page import="kr.bit.model.*" %>
 <%@ page import="java.util.*" %>
 <% 	
-	ArrayList<MemberVO> list = (ArrayList<MemberVO>) request.getAttribute("list");
+	//ArrayList<MemberVO> list= //(ArrayList<MemberVO>) request.getAttribute("list");
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,28 +22,30 @@
 </script>
 </head>
 <body>
-[MemberLsit : Controller에서 보낸 MemberVO 객체] <br/>
+[JSTL을 사용하여 구현] <br/>
 	<table class="table table-bordered">
 		<tr>
 			<td>번호</td>
 			<td>아이디</td>
 			<td>비밀번호</td>
+			<td>이름</td>
 			<td>나이</td>
 			<td>이메일</td>
 			<td>전화번호</td>
 			<td>삭제</td>
 		</tr>
-		<% for(MemberVO vo : list){ %>
+		<c:forEach var="vo" items="${list}">
 				<tr>
-				<td><%= vo.getNum() %></td>
-				<td><a href="memberContent.do?num=<%=vo.getNum()%>" style=color:black><%= vo.getId() %></a></td>
-				<td><%= vo.getPass() %></td>
-				<td><%= vo.getAge() %></td>
-				<td><%= vo.getEmail() %></td>
-				<td><%= vo.getPhone() %></td>
-				<td><input type="button" class="btn btn-danger" value="삭제" onclick="deleteFn(<%=vo.getNum()%>)"/></td>
+				<td>${vo.num}</td>
+				<td><a href="memberContent.do?num=${vo.num}" style=color:black>${vo.id}</a></td>
+				<td>${vo.pass}</td>
+				<td>${vo.name}</td>
+				<td>${vo.age}</td>
+				<td>${vo.email}</td>
+				<td>${vo.phone}</td>
+				<td><input type="button" class="btn btn-danger" value="삭제" onclick="deleteFn(${vo.num})"/></td>
 				</tr>
-			<% } %>
+		</c:forEach>
 		<tr>
 			<td colspan="8" align="right"><input type="button" class="btn btn-info" value="회원가입" onclick="location.href='member/memberResgister.html'"/></td>
 		</tr>
