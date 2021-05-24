@@ -43,7 +43,7 @@ public class MemberInsertController extends HttpServlet {
 			// insert 성공
 			PrintWriter out = response.getWriter();
 			//out.println("insert success");
-			response.sendRedirect("/MVC01/memberList.do");
+			response.sendRedirect("/MVC03/memberList.do");
 		}
 		else {
 			// insert 실패 => 예외 객체를 만들어 WAS에게 던진다.
