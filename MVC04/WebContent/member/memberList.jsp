@@ -17,12 +17,12 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
 <script type="text/javascript">
   function deleteFn(num){
-	  location.href="/MVC03/memberDelete.do?num="+num; // ?num=12
+	  location.href="/MVC04/memberDelete.do?num="+num; // ?num=12
   }
 </script>
 </head>
 <body>
-[MVC03 예제 - Controller+View(JSTL+EL)]
+[MVC04]
 <table class="table table-bordered">
   <tr>
     <td>번호</td>
@@ -37,7 +37,7 @@
   <c:forEach var="vo" items="${list}">
     	  <tr>
     	    <td>${vo.num}</td>
-    	    <td><a href="/MVC03/memberContent.do?num=${vo.num}">${vo.id}</a></td>
+    	    <td><a href="/MVC04/memberContent.do?num=${vo.num}">${vo.id}</a></td>
     	    <td>${vo.pass}</td>
     	    <td>${vo.name}</td>
     	    <td>${vo.age}</td>
@@ -47,7 +47,7 @@
     	  </tr>    	 
   </c:forEach>
   <tr>
-  <td colspan="8" align="right"><input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='member/memberRegister.html'"/></td>
+  <td colspan="8" align="right"><input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='/MVC04/memberRegister.do'"/></td>
   </tr>
 </table>
 </body>
