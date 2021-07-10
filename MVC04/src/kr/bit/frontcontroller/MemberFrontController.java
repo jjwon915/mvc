@@ -44,43 +44,10 @@ public class MemberFrontController extends HttpServlet {
 		Controller controller;
 		String nextPage = null;
 		
-		// HandlerMapping 기능만 담당.
-		if(command.equals("/memberList.do")) {
-			
-			controller = new MemberListController();
-			nextPage = controller.requestHandler(request, response);
-			
-		}
-		else if(command.equals("/memberInsert.do")) {
-			
-			controller = new MemberInsertController();
-			nextPage = controller.requestHandler(request, response);
-			
-		}
-		else if(command.equals("/memberRegister.do")) {
-			
-			controller = new MemberRegisterController();
-			nextPage = controller.requestHandler(request, response);
-			
-		}
-		else if(command.equals("/memberContent.do")) {
-			
-			controller = new MemberContentController();
-			nextPage = controller.requestHandler(request, response);
-
-		}
-		else if(command.equals("/memberUpdate.do")) {
-			
-			controller = new MemberUpdateController();
-			nextPage = controller.requestHandler(request, response);
-			
-		}
-		else if(command.equals("/memberDelete.do")) {
-			
-			controller = new MemberDeleteController();
-			nextPage = controller.requestHandler(request, response);
-			
-		}
+		// HandlerMapping Class로 분리.
+		HandlerMapping handlermapping = new HandlerMapping();
+		controller = handlermapping.getController(command);
+		nextPage = controller.requestHandler(request, response);
 		
 		// forward, redirect
 		if(nextPage != null) {
