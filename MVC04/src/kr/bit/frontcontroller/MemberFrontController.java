@@ -44,53 +44,54 @@ public class MemberFrontController extends HttpServlet {
 		Controller controller;
 		String nextPage = null;
 		
-		// 요청에 따른 분기 작업
+		// HandlerMapping 기능만 담당.
 		if(command.equals("/memberList.do")) {
 			
-			// 회원 리스트
 			controller = new MemberListController();
 			nextPage = controller.requestHandler(request, response);
-			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
-			rd.forward(request, response);
 			
 		}
 		else if(command.equals("/memberInsert.do")) {
 			
 			controller = new MemberInsertController();
 			nextPage = controller.requestHandler(request, response);
-			response.sendRedirect(nextPage);
 			
 		}
 		else if(command.equals("/memberRegister.do")) {
 			
 			controller = new MemberRegisterController();
 			nextPage = controller.requestHandler(request, response);
-			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
-			rd.forward(request, response);
 			
 		}
 		else if(command.equals("/memberContent.do")) {
 			
 			controller = new MemberContentController();
 			nextPage = controller.requestHandler(request, response);
-			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
-			rd.forward(request, response);
-			
-			
+
 		}
 		else if(command.equals("/memberUpdate.do")) {
 			
 			controller = new MemberUpdateController();
 			nextPage = controller.requestHandler(request, response);
-			response.sendRedirect(nextPage);
 			
 		}
 		else if(command.equals("/memberDelete.do")) {
 			
 			controller = new MemberDeleteController();
 			nextPage = controller.requestHandler(request, response);
-			response.sendRedirect(nextPage);
 			
+		}
+		
+		// forward, redirect
+		if(nextPage != null) {
+			if(nextPage.indexOf("redirect:") != -1) {
+				nextPage = nextPage.replaceAll("redirect:", "");
+				response.sendRedirect(nextPage);
+			}
+			else {
+				RequestDispatcher rd = request.getRequestDispatcher(nextPage);
+				rd.forward(request, response);
+			}
 		}
 		
 	}

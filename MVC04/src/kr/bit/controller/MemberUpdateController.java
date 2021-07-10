@@ -31,7 +31,7 @@ public class MemberUpdateController implements Controller {
 		int cnt = dao.memberUpdate(vo);
 		if(cnt > 0) {
 			// update 성공
-			nextPage = "/MVC04/memberList.do";
+			nextPage = "redirect:/MVC04/memberList.do";
 		}
 		else {
 			// update 실패 => 예외 객체를 만들어 WAS에게 던진다.

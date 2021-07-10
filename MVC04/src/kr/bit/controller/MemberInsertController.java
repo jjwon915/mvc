@@ -39,7 +39,7 @@ public class MemberInsertController implements Controller {
 		if(result > 0) {
 			// insert 성공
 			PrintWriter out = response.getWriter();
-			nextPage = "/MVC04/memberList.do";
+			nextPage = "redirect:/MVC04/memberList.do";
 		}
 		else {
 			// insert 실패 => 예외 객체를 만들어 WAS에게 던진다.
