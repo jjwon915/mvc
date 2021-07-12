@@ -26,12 +26,13 @@ public class MemberUpdateController implements Controller {
 		vo.setEmail(email);
 		vo.setPhone(phone);
 		
+		String ctx = request.getContextPath();
 		String nextPage = null;
 		MemberDAO dao = new MemberDAO();
 		int cnt = dao.memberUpdate(vo);
 		if(cnt > 0) {
 			// update 성공
-			nextPage = "redirect:/MVC04/memberList.do";
+			nextPage = "redirect:" + ctx + "/memberList.do";
 		}
 		else {
 			// update 실패 => 예외 객체를 만들어 WAS에게 던진다.

@@ -16,12 +16,13 @@ public class MemberDeleteController implements Controller {
 		
 		int number = Integer.parseInt(request.getParameter("num"));
 		
+		String ctx = request.getContextPath();
 		String nextPage = null;
 		MemberDAO dao = new MemberDAO();
 		int result = dao.memberDelete(number);
 		
 		if(result > 0) {
-			nextPage = "redirect:/MVC04/memberList.do";
+			nextPage = "redirect:" +  ctx + "/memberList.do";
 		} 
 		else {
 			throw new ServletException("not delete");

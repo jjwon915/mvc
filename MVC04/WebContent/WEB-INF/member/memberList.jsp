@@ -6,6 +6,7 @@
      // ArrayList<MemberVO> list=(ArrayList<MemberVO>)request.getAttribute("list");
 %>    
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+<c:set var ="ctx" value = "${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
 <script type="text/javascript">
   function deleteFn(num){
-	  location.href="/MVC04/memberDelete.do?num="+num; // ?num=12
+	  location.href="${ctx}/memberDelete.do?num="+num; // ?num=12
   }
 </script>
 </head>
@@ -37,7 +38,7 @@
   <c:forEach var="vo" items="${list}">
     	  <tr>
     	    <td>${vo.num}</td>
-    	    <td><a href="/MVC04/memberContent.do?num=${vo.num}">${vo.id}</a></td>
+    	    <td><a href="${ctx}/memberContent.do?num=${vo.num}">${vo.id}</a></td>
     	    <td>${vo.pass}</td>
     	    <td>${vo.name}</td>
     	    <td>${vo.age}</td>
@@ -47,7 +48,7 @@
     	  </tr>    	 
   </c:forEach>
   <tr>
-  <td colspan="8" align="right"><input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='/MVC04/memberRegister.do'"/></td>
+  <td colspan="8" align="right"><input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='${ctx}/memberRegister.do'"/></td>
   </tr>
 </table>
 </body>
