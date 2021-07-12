@@ -24,7 +24,7 @@ public class MemberListController implements Controller {
 		// member/memberList.jsp에게 list를 줘야한다.
 		// 3. 다음 페이지로 넘어가는 정보를 return 해준다.
 		
-		return "/WEB-INF/member/memberList.jsp";
+		return "memberList";
 		
 	}
 

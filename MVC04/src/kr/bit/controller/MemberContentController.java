@@ -22,7 +22,8 @@ public class MemberContentController implements Controller {
 		
 		request.setAttribute("vo", vo);
 		
-		return "/WEB-INF/member/memberContent.jsp";
+		return "memberContent"; // View의 이름만 return (경로가 바뀌면 모두 수정해야 하니까)
+		//return "/WEB-INF/member/memberContent.jsp";
 	}
 
 }
