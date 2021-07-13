@@ -44,3 +44,10 @@
   - Controller는 JSP가 보낸 결과를 Client에게 응답한다.
   - Controller와 JSP가 Data를 주고 받고 하는 것을 **Forward(Forwarding)** 라고 한다. 
   - Controller가 가진 Data를 JSP가 가져가는 것은 **객체 바인딩**이라고 한다. 객체를 특정 메모리에 연결시켰다는 의미이기 때문에 객체 바인딩이라고 한다. Controller는 setAttribute를 이용해 특정 메모리 공간에 Data를 넣어주고, 그 공간의 메모리를 JSP가 getAttribute를 이용해 가져간다. 
+  
+* MVC04
+  - FrontController와 Controller역할의 Java 파일들로 분리해 구성하였다.
+  - Controller역할을 하는 Java파일들을 POJO라고 한다.
+  - 이전까지는 하나의 Controller에서 사용자의 요청을 받아 처리하는 역할까지 모두 하였지만 사용자의 요청을 받아 알맞은 일을 POJO에서 처리한다.
+  - 또한 FrontController에서 어떤 요청을 받았는지 if-else문을 활용해 나누기보다는 HandlerMapping class를 만들어 어떤 요청을 하였는지 판단하도록 해 FrontController에서는 사용자의 요청만 받아오는 역할을 처리하도록 구현한다.
+  - ViewResolver를 통해 jsp파일을의 실제 위치 주소를 POJO에서 직접 return 하지 않고, prefix와 subfix를 붙여 ViewResolver에서 return 하는 방식을 사용했기 때문에 파일의 경로가 바뀌거나 수정사항이 발생하면 유지보수가 편하도록 수정하였다.
