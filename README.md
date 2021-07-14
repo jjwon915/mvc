@@ -52,4 +52,5 @@
   - 또한 FrontController에서 어떤 요청을 받았는지 if-else문을 활용해 나누기보다는 HandlerMapping class를 만들어 어떤 요청을 하였는지 판단하도록 해 FrontController에서는 사용자의 요청만 받아오는 역할을 처리하도록 구현한다.
   - ViewResolver를 통해 jsp파일을의 실제 위치 주소를 POJO에서 직접 return 하지 않고, prefix와 subfix를 붙여 ViewResolver에서 return 하는 방식을 사용했기 때문에 파일의 경로가 바뀌거나 수정사항이 발생하면 유지보수가 편하도록 수정하였다.
   - MVC04까지는 JDBC를 이용해 구현, 이후 프로젝트는 MyBatis로 수정한다.
+  - 현재 방식은 FrontController와 POJO들로 구성해 FrontController의 역할이 가벼워졌지만, 이 방법도 POJO들이 계속 증가할 수 있다는 단점이 있다.
  
