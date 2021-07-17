@@ -53,4 +53,13 @@
   - ViewResolver를 통해 jsp파일을의 실제 위치 주소를 POJO에서 직접 return 하지 않고, prefix와 subfix를 붙여 ViewResolver에서 return 하는 방식을 사용했기 때문에 파일의 경로가 바뀌거나 수정사항이 발생하면 유지보수가 편하도록 수정하였다.
   - MVC04까지는 JDBC를 이용해 구현, 이후 프로젝트는 MyBatis로 수정한다.
   - 현재 방식은 FrontController와 POJO들로 구성해 FrontController의 역할이 가벼워졌지만, 이 방법도 POJO들이 계속 증가할 수 있다는 단점이 있다.
+  
+* MVC05
+  - MVC04까지는 JDBC를 이용해 DB를 연결하였는데 이것을 MyBatis로 변경한다.
+  - JDBC의 문제점 : 유지보수가 어렵고, driver 정보, user, password 정보를 코드에 노출하고 있기 때문에 보안상의 문제가 존재한다. 또한 개발속도가 느리다는 단점이 있다.
+  - MyBatis는 SQL Mapping Framework로서 Mapping하는 방식으로 사용하며, 기본 설정을 위해 3개의 파일이 필요하다.
+    - (1) config.xml : 환경설정 파일로, Mapper.xml의 정보와 db.propeties의 정보 등을 저장한다.
+    - (2) Mapper : SQL 쿼리들을 저장하는 xml 파일로 MemberDAO java 파일에서 id를 통해 사용한다.
+    - (3) db.properties : driver, user, password, url 정보만 따로 저장해 사용한다.
+    - 또한 MyBatis는 Connection POOL 방식으로 구동된다. JDBC의 경우에는 사용자가 요청할 때 Connection을 생성해 작동하는 방식이었다. MyBatis는 SqlSessionFactory에 SqlSession들을 미리 생성해두고 필요할 때 꺼내서 사용하는 방식으로 구현한다. 또한 직접 쿼리를 Java 파일에서 작성하지 않고 Mapper.xml에 저장한 쿼리를 id를 통해 불러다 사용하기 때문에 코드가 JDBC보다 훨씬 짧아진다.
  
