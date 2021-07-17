@@ -42,8 +42,34 @@ public class MemberDAO {
 	// 회원가입
 	public int memberInsert(MemberVO vo) {
 		SqlSession session = sqlSessionFactory.openSession();
-		int cnt = session.insert("SQL_ID", vo);
+		int cnt = session.insert("memberInsert", vo);
 		session.commit(); // insert는 DB의 내용이 수정되기 때문에 commit을 꼭 해준다.
+		session.close();
+		return cnt;
+	}
+	
+	// 회원삭제
+	public int memberDelete(int num) {
+		SqlSession session = sqlSessionFactory.openSession();
+		int cnt = session.delete("memberDelete", num);
+		session.commit();
+		session.close();
+		return cnt;
+	}
+	
+	// 회원상세보기
+	public MemberVO memberContent(int num) {
+		SqlSession session = sqlSessionFactory.openSession();
+		MemberVO vo = session.selectOne("memberContent", num);
+		session.close();
+		return vo;
+	}
+	
+	// 회원 정보 수정
+	public int memberUpdate(MemberVO vo) {
+		SqlSession session = sqlSessionFactory.openSession();
+		int cnt = session.update("memberUpdate", vo);
+		session.commit();
 		session.close();
 		return cnt;
 	}
