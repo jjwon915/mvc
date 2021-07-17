@@ -23,7 +23,7 @@
 </script>
 </head>
 <body>
-[MVC04]
+[MVC05 - JDBC를 MyBatis로 변경하기]
 <table class="table table-bordered">
   <tr>
     <td>번호</td>
