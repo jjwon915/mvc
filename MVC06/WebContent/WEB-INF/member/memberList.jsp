@@ -41,6 +41,9 @@
 			  return true;
 		  }
 	  }
+  	function logout(){
+  		location.href="<c:url value='/memberLogout.do'/>"; //MVC06/memberLogout.do 매핑.
+  	}
 </script>
 </head>
 <body>
@@ -48,17 +51,23 @@
   <h2>회원 관리 시스템</h2>
   <div class="panel panel-default">
     <div class="panel-heading">
-    	<form class="form-inline" action="${ctx}/memberLogin.do" method="post">
-		    <div class="form-group">
-		      <label for="user_id">ID:</label>
-		      <input type="text" class="form-control" id="user_id" placeholder="ID를 입력하세요" name="user_id">
-		    </div>
-		    <div class="form-group">
-		      <label for="pwd">Password:</label>
-		      <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요" name="password">
-		    </div>
-		    <button type="submit" class="btn btn-default" onclick="return check()">로그인</button>
-	  	</form>
+    	<c:if test="${sessionScope.userId == null || sessionScope.userId == ''}">
+	    	<form class="form-inline" action="${ctx}/memberLogin.do" method="post">
+			    <div class="form-group">
+			      <label for="user_id">ID:</label>
+			      <input type="text" class="form-control" id="user_id" placeholder="ID를 입력하세요" name="user_id">
+			    </div>
+			    <div class="form-group">
+			      <label for="pwd">Password:</label>
+			      <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요" name="password">
+			    </div>
+			    <button type="submit" class="btn btn-default" onclick="return check()">로그인</button>
+		  	</form>
+	  	</c:if>
+	  	<c:if test="${sessionScope.userId != null && sessionScope.userId != ''}">
+		  	${sessionScope.userName} 님 환영합니다.
+		  	<button type="submit" class="btn btn-warning" onclick="logout()">로그아웃</button>
+	  	</c:if>
     </div>
     <div class="panel-body">
 		<div class="table-responsive">          
@@ -79,13 +88,23 @@
 			   	<c:forEach var="vo" items="${list}">
 		    	  <tr>
 		    	    <td>${vo.num}</td>
-		    	    <td><a href="${ctx}/memberContent.do?num=${vo.num}">${vo.id}</a></td>
+		    	    <c:if test="${sessionScope.userId == vo.id}">
+		    	    	<td><a href="${ctx}/memberContent.do?num=${vo.num}">${vo.id}</a></td>
+		    	    </c:if>
+		    	    <c:if test="${sessionScope.userId != vo.id}">
+		    	    	<td>${vo.id}</td>
+		    	    </c:if>
 		    	    <td>${vo.pass}</td>
 		    	    <td>${vo.name}</td>
 		    	    <td>${vo.age}</td>
 		    	    <td>${vo.email}</td>
 		    	    <td>${vo.phone}</td>
-		    	    <td><input type="button" value="삭제" class="btn btn-warning" onclick="deleteFn(${vo.num})"></td>
+		    	    <c:if test="${sessionScope.userId == vo.id}">
+		    	    	<td><input type="button" value="삭제" class="btn btn-warning" onclick="deleteFn(${vo.num})" ></td>
+		    	    </c:if>
+		    	    <c:if test="${sessionScope.userId != vo.id}">
+		    	    	<td><input type="button" value="삭제" class="btn btn-warning" onclick="deleteFn(${vo.num})" disabled="disabled"></td>
+		    	    </c:if>
 		    	  </tr>    	 
 		 		</c:forEach>
 		 		<tr>
