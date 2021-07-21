@@ -27,7 +27,7 @@
 </head>
 <body>
 <div class="container">
-	<h2>회원 관리 시스템</h2>
+	<h3>${vo.name}의 상세 정보</h3>
 	<div class="panel panel-default">
     <div class="panel-heading">
 		<c:if test ="${sessionScope.userId != null && sessionScope.userId != ''}">
@@ -41,45 +41,45 @@
    	 	<form id="form1" name="form1" class="form-horizontal" method="post">
    	 		<input type="hidden" name="num" value="${vo.num}"/>
 	    	<div class="form-group">
-	    		<label class="control-Label col-sm-2">번호 : </label>
+	    		<label class="control-label col-sm-2">번호 : </label>
 	    		<div class="col-sm-10">
 	    			<c:out value="${vo.num}"/>
 	    		</div>
 	    	</div>
 	    	<div class="form-group">
-	    		<label class="control-Label col-sm-2">아이디 : </label>
+	    		<label class="control-label col-sm-2">아이디 : </label>
 	    		<div class="col-sm-10">
 	    			<c:out value="${vo.id}"/>
 	    		</div>
 	    	</div>
 	    	<div class="form-group">
-	    		<label class="control-Label col-sm-2">비밀번호 : </label>
+	    		<label class="control-label col-sm-2">비밀번호 : </label>
 	    		<div class="col-sm-10">
 	    			<c:out value="${vo.pass}"/>
 	    		</div>
 	    	</div>
 	    	<div class="form-group">
-	    		<label class="control-Label col-sm-2">이름 : </label>
+	    		<label class="control-label col-sm-2">이름 : </label>
 	    		<div class="col-sm-10">
 	    			<c:out value="${vo.name}"/>
 	    		</div>
 	    	</div>
 	    	<div class="form-group">
-	    		<label class="control-Label col-sm-2">나이 : </label>
+	    		<label class="control-label col-sm-2">나이 : </label>
 	    		<div class="col-sm-10">
-	    			<input type="text" class="form-control" id="age" name="age" value="${vo.age}">
+	    			<input type="text" class="form-control" id="age" name="age" value="${vo.age}" style="width: 10%">
 	    		</div>
 	    	</div>
 	    	<div class="form-group">
-	    		<label class="control-Label col-sm-2">이메일 : </label>
+	    		<label class="control-label col-sm-2">이메일 : </label>
 	    		<div class="col-sm-10">
-	    			<input type="text" class="form-control" id="email" name="email" value="${vo.email}">
+	    			<input type="text" class="form-control" id="email" name="email" value="${vo.email}" style="width: 30%">
 	    		</div>
 	    	</div>
 	    	<div class="form-group">
-	    		<label class="control-Label col-sm-2">전화번호 : </label>
+	    		<label class="control-label col-sm-2">전화번호 : </label>
 	    		<div class="col-sm-10">
-	    			<input type="text" class="form-control" id="phone" name="phone" value="${vo.phone}">
+	    			<input type="text" class="form-control" id="phone" name="phone" value="${vo.phone}" style="width: 30%">
 	    		</div>
 	    	</div>
     	</form>
