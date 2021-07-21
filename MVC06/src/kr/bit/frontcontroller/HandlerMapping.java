@@ -8,6 +8,7 @@ import kr.bit.controller.MemberDeleteController;
 import kr.bit.controller.MemberInsertController;
 import kr.bit.controller.MemberListController;
 import kr.bit.controller.MemberLoginController;
+import kr.bit.controller.MemberLogoutController;
 import kr.bit.controller.MemberRegisterController;
 import kr.bit.controller.MemberUpdateController;
 
@@ -25,6 +26,7 @@ public class HandlerMapping {
 		mappings.put("/memberUpdate.do", new MemberUpdateController());
 		mappings.put("/memberDelete.do", new MemberDeleteController());
 		mappings.put("/memberLogin.do", new MemberLoginController());
+		mappings.put("/memberLogout.do", new MemberLogoutController());
 		
 	}
 	
