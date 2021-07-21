@@ -22,6 +22,7 @@ public class MemberDeleteController implements Controller {
 		int result = dao.memberDelete(number);
 		
 		if(result > 0) {
+			request.getSession().invalidate();
 			nextPage = "redirect:" +  ctx + "/memberList.do";
 		} 
 		else {
