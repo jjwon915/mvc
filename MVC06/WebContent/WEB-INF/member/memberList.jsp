@@ -66,7 +66,7 @@
 	  	</c:if>
 	  	<c:if test="${sessionScope.userId != null && sessionScope.userId != ''}">
 		  	${sessionScope.userName} 님 환영합니다.
-		  	<button type="submit" class="btn btn-warning" onclick="logout()">로그아웃</button>
+		  	<button type="submit" class="btn btn-info" onclick="logout()">로그아웃</button>
 	  	</c:if>
     </div>
     <div class="panel-body">
@@ -88,12 +88,7 @@
 			   	<c:forEach var="vo" items="${list}">
 		    	  <tr>
 		    	    <td>${vo.num}</td>
-		    	    <c:if test="${sessionScope.userId == vo.id}">
-		    	    	<td><a href="${ctx}/memberContent.do?num=${vo.num}">${vo.id}</a></td>
-		    	    </c:if>
-		    	    <c:if test="${sessionScope.userId != vo.id}">
-		    	    	<td>${vo.id}</td>
-		    	    </c:if>
+		    	    <td><a href="${ctx}/memberContent.do?num=${vo.num}">${vo.id}</a></td>
 		    	    <td>${vo.pass}</td>
 		    	    <td>${vo.name}</td>
 		    	    <td>${vo.age}</td>
@@ -108,7 +103,9 @@
 		    	  </tr>    	 
 		 		</c:forEach>
 		 		<tr>
-  					<td colspan="8" align="right"><input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='${ctx}/memberRegister.do'"/></td>
+		 			<c:if test="${sessionScope.userId == null || sessionScope.userId == ''}">
+  						<td colspan="8" align="right"><input type="button" value="회원가입" class="btn btn-success" onclick="location.href='${ctx}/memberRegister.do'"/></td>
+  					</c:if>
  				</tr>
 			   </tbody>
 			 </table>
