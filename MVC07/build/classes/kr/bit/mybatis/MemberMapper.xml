@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.bit.mybatis.MemberMapper">
+    
+    <!-- 일반적으로 id는 MemberDAO의 메소드 이름과 동일하게 생성한다. 
+    	 결과를 받아 어떤 타입으로 묶어야 하는지 resultType을 통해 설정한다. 
+    	 MemberVO 타입이지만 MemberVO가 있는 위치를 적어야 한다.
+    	 위치를 적으면 불편하니 config.xml에서 TypeAlias를 설정해준다. -->
+    <select id="memberList" resultType="memberVO">
+        select * from member
+    </select>
+    
+    <!-- parameterTYpe : MemberListController에서 insert 요청한 MemberVO 객체를 받기위함. -->
+    <insert id="memberInsert" parameterType="memberVO">
+        insert into member(id, pass, name, age, email, phone)
+        values (
+        #{id}, 
+        #{pass}, 
+        #{name}, 
+        #{age}, 
+        #{email}, 
+        #{phone}
+        )
+    </insert>
+    
+    <delete id="memberDelete" parameterType="Integer">
+        delete from member where num=#{num}
+    </delete>
+    
+    <select id="memberContent" parameterType="Integer" resultType="memberVO">
+        select * from member where num=#{num}
+    </select>
+    
+    <update id="memberUpdate" parameterType="memberVO">
+        update member set age=#{age}, email=#{email}, phone=#{phone} where num=#{num}
+    </update>
+    
+    <select id="memberLogin" parameterType="memberVO" resultType="String">
+        select name from member where id=#{id} and pass=#{pass}
+    </select>
+    
+</mapper>
