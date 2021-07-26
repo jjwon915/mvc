@@ -20,6 +20,34 @@
      function frmreset(){
    	  document.form1.reset();
      }
+     function doublecheck(){
+    	 if($('#id').val()==''){
+    		 alert("ID를 입력하세요.");
+    		 $('#id').focus(); // 아이디 자리로 다시 커서 이동.
+    		 return;
+    	 }
+    	 // 아이디가 입력된 경우
+    	 var id = $('#id').val();
+    	 $.ajax({
+    		 url : "<c:url value='/memberDbCheck.do'/>",
+    		 type : "POST",
+    		 data : {"id" : id},
+    		 success : dbCheck, // 응답 성공시 함수(callback) 
+    		 error : function(){alert("error 발생");}
+    	 });
+     }
+     // 웅답 성공시 success에서 callback 하는 함수, 넘어오는 데이터 받음.
+     function dbCheck(data){
+    	 if(data != "null"){
+    		 alert("중복된 ID가 있습니다.");
+    		 $('#id').focus();
+    	 }
+    	 else{
+    		 alert("사용가능한 ID입니다.");
+    		 $('#id').focus();
+    	 }
+     }
+     
   </script>
 </head>
 <body>
@@ -39,7 +67,16 @@
 	  <div class="form-group">
 	    <label class="control-label col-sm-2" for="id">아이디:</label>
 	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력하세요" style="width: 30%">
+	    	<table style="width : 30%">
+	    		<tr>
+	    		<td>
+	    			<input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력하세요">
+	    		</td>
+	    		<td>
+	    			<input type="button" class='btn btn-danger' onclick="doublecheck()" value="중복확인">
+	    		</td>
+	    		</tr>
+	    	</table>
 	    </div>
 	  </div>
 	  <div class="form-group">
@@ -57,7 +94,7 @@
 	    <div class="form-group">
 	    <label class="control-label col-sm-2" for="age">나이:</label>
 	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="age" name="age" placeholder="나이입력" style="width: 10%">
+	      <input type="text" class="form-control" id="age" name="age" placeholder="나이입력" style="width: 30%">
 	    </div>
 	  </div>
 	    <div class="form-group">
