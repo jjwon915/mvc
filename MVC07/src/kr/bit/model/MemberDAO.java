@@ -68,7 +68,16 @@ public class MemberDAO {
 	   session.close();
 	   return user_name;
    }
-   
+   // 아이디 중복 확인
+   public String memberDbCheck(String id) {
+	   SqlSession session=sqlSessionFactory.openSession();
+	   String dbId = session.selectOne("memberDbCheck", id);
+	   String idDouble = "NO";
+	   if(dbId != null) {
+		   idDouble = "YES";
+	   }
+	   return idDouble;
+   }
 }
 
 
