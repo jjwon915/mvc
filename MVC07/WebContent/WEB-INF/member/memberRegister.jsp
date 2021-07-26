@@ -38,7 +38,7 @@
      }
      // 웅답 성공시 success에서 callback 하는 함수, 넘어오는 데이터 받음.
      function dbCheck(data){
-    	 if(data != "null"){
+    	 if(data != "NO"){
     		 alert("중복된 ID가 있습니다.");
     		 $('#id').focus();
     	 }
