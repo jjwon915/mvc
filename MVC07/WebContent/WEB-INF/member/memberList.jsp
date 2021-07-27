@@ -40,6 +40,56 @@
   function logout(){
 	  location.href="<c:url value='/memberLogout.do'/>";  // /MVC06/memberList.do
   }
+  function memberList(){
+	  
+	  $.ajax({
+		 url : "<c:url value='/memberAjaxList.do'/>",
+		 type : "get",
+		 dataType : "json",
+		 success : resultHtml,
+		 error : function(){error("error");}
+	  });
+	  
+  }
+  
+  function resultHtml(data){
+	  var html = "<table class='table table-hover'>";
+	  html +="<tr>";
+	  html +="<th>번호</th>";
+	  html +="<th>아이디</th>";
+	  html +="<th>비밀번호</th>";
+	  html +="<th>이름</th>";
+	  html +="<th>나이</th>";
+	  html +="<th>이메일</th>";
+	  html +="<th>전화번호</th>";
+	  html +="<th>삭제</th>";
+	  html +="</tr>";
+	  
+	  // 반복문 처리
+	  $.each(data, function(index, obj){
+		  html += "<tr>";
+		  html += "<td>"+obj.num+"</td>";
+		  html += "<td>"+obj.id+"</td>";
+		  html += "<td>"+obj.pass+"</td>";
+		  html += "<td>"+obj.name+"</td>";
+		  html += "<td>"+obj.age+"</td>";
+		  html += "<td>"+obj.email+"</td>";
+		  html += "<td>"+obj.phone+"</td>";
+		  html += "<td><input type='button' value='삭제' class='btn btn-warning' onclick='delFn("+obj.num+")'/></td>";
+		  html += "</tr>";
+	  });
+	  html += "</table>";
+	  $('#collapse1 .panel-body').html(html);
+  }
+  function delFn(num){
+	  $.ajax({
+		 url : "<c:url value='/memberAjaxDelete.do'/>",
+		 type : "get",
+		 data : {"num" : num},
+		 success : memberList,
+		 error : function(){alert("error");}
+	  });
+  }
 </script>
 </head>
 <body>
@@ -109,6 +159,20 @@
       회원관리 ERP System(@jjwon915)
     </div>
   </div>
+	  <div class="panel-group">
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" href="#collapse1" onclick="memberList()">회원리스트</a>
+		      </h4>
+		    </div>
+		    <div id="collapse1" class="panel-collapse collapse">
+		      <div class="panel-body">Panel Body</div>
+		      <div class="panel-footer">Panel Footer</div>
+		    </div>
+		  </div>
+	  </div>
+
 </div>
 </body>
 </html>
