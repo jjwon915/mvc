@@ -47,28 +47,27 @@
     		 $('#id').focus();
     	 }
      }
-     
      function add2(){
-    	 if($("#file").val() != ''){ // file이 첨부된 경우.
-    		 var formData = new FormData();
-    	 	 formData.append("file", $("input[name=file]")[0].files);
-    	 	 $.ajax({
-    	 		url : "<c:url value='/fileAdd.do()'/>", // file 업로드 컨트롤러.
-    	 		type : "POST",
-    	 		data : formData,
-    	 		processData : false,
-    	 		contentType : false,
-    	 		success : function(data){
-    	 			// 업로드된 실제 파일 이름 전달 받기.
-    	 			$('$filename').val(data);
-    	 			document.form1.action="<c:url value='/memberInsert.do'/>"; // 텍스트 데이터 저장.
-    	 			documebt.form1.submit();
-    	 		},
-    	 		error : function(){alert("error");}
-    	 	 });
-    	 }
-    	 else{ // file이 첨부되지 않은 경우.
-    		 
+    	 if($("#file").val()!=''){ // 파일이 첨부가 된 경우...
+    		 var formData=new FormData();
+    	     formData.append("file", $("input[name=file]")[0].files[0]);
+    		 $.ajax({
+    			 url : "<c:url value='/fileAdd.do'/>", // fileAdd.do(파일업로드)
+    			 type : "post",
+    			 data : formData,
+    			 processData : false,
+    			 contentType : false,
+    			 success : function(data){  //업로드된 실재파일 이름을 전달 받기
+    				// alert(data);
+    				$('#filename').val(data);  
+    			    document.form1.action="<c:url value='/memberInsert.do'/>?mode=fadd"; // text데이터를 저장하는 부분
+    			    document.form1.submit();//id, pass, name, age, email, phone, filename
+    			 },
+    			 error : function(){ alert("error"); }
+    		 });    		 
+    	 }else{ // 파일이 첨부 되지 않은 경우...
+    		 document.form1.action="<c:url value='/memberInsert.do'/>?mode=add"; 
+			 document.form1.submit();//id, pass, name, age, email, phone, X
     	 }
      }
      
