@@ -9,12 +9,12 @@
     	 MemberVO 타입이지만 MemberVO가 있는 위치를 적어야 한다.
     	 위치를 적으면 불편하니 config.xml에서 TypeAlias를 설정해준다. -->
     <select id="memberList" resultType="memberVO">
-        select * from member
+        select * from member1
     </select>
     
     <!-- parameterTYpe : MemberListController에서 insert 요청한 MemberVO 객체를 받기위함. -->
     <insert id="memberInsert" parameterType="memberVO">
-        insert into member(id, pass, name, age, email, phone)
+        insert into member1(id, pass, name, age, email, phone)
         values (
         #{id}, 
         #{pass}, 
@@ -25,23 +25,36 @@
         )
     </insert>
     
+    <insert id="memberInsertFile" parameterType="memberVO">
+        insert into member1(id, pass, name, age, email, phone, filename)
+        values (
+        #{id}, 
+        #{pass}, 
+        #{name}, 
+        #{age}, 
+        #{email}, 
+        #{phone},
+        #{filename}
+        )
+    </insert>
+    
     <delete id="memberDelete" parameterType="Integer">
-        delete from member where num=#{num}
+        delete from member1 where num=#{num}
     </delete>
     
     <select id="memberContent" parameterType="Integer" resultType="memberVO">
-        select * from member where num=#{num}
+        select * from member1 where num=#{num}
     </select>
     
     <update id="memberUpdate" parameterType="memberVO">
-        update member set age=#{age}, email=#{email}, phone=#{phone} where num=#{num}
+        update member1 set age=#{age}, email=#{email}, phone=#{phone} where num=#{num}
     </update>
     
     <select id="memberLogin" parameterType="memberVO" resultType="String">
-        select name from member where id=#{id} and pass=#{pass}
+        select name from member1 where id=#{id} and pass=#{pass}
     </select>
     
     <select id="memberDbCheck" parameterType="String" resultType="String">
-        select id from member where id=#{id}
+        select id from member1 where id=#{id}
     </select>
 </mapper>
