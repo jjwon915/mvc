@@ -1,5 +1,5 @@
 -- member(회원) table
-create table member(
+create table member1(
  num int primary key auto_increment,
  id varchar(20) not null,
  pass varchar(20) not null,
@@ -7,11 +7,12 @@ create table member(
  age int not null,
  email varchar(30) not null,
  phone varchar(30) not null,
+ filename varchar(100),
  unique key(id)
 );
 -- SQL(CRUD), JDBC
 -- 검색
-select * from member;
+select * from member1;
 
 -- insert(저장)
 insert into member(id, pass, name, age, email, phone)
