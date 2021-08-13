@@ -27,6 +27,10 @@
    function getFile(filename){
 	   location.href="<c:url value='/fileGet.do'/>?filename="+filename;
    }
+   
+   function delFile(num, filename){
+	   location.href="<c:url value='fileDel.do'/>?num="+num+"&filename="+filename;
+   }
 </script>
 </head>
 <body>
@@ -36,7 +40,9 @@
     <div class="panel-heading">
      <c:if test="${sessionScope.userId!=null && sessionScope.userId!='' && sessionScope.userId == vo.id}">
        <label>
-       		<img src="<c:out value='file_repo/${vo.filename}'/>" width="60px" height="60px"/>
+       		<c:if test="${vo.filename != ''}">
+       			<img src="<c:out value='file_repo/${vo.filename}'/>" width="60px" height="60px"/>
+       		</c:if>
        		${sessionScope.userName}님이 로그인 하셨습니다.
        </label>
      </c:if>
@@ -97,7 +103,7 @@
            		<a href="javascript:getFile('${vo.filename}')"><c:out value="${vo.filename}"/></a>
            </c:if>
            <c:if test="${sessionScope.userId != null && sessionScope.userId == vo.id && vo.filename != null && vo.filename != ''}">
-           		<span class="glyphicon glyphicon-remove"></span>
+           		<a href="javascript:delFile('${vo.num}', '${vo.filename}')"><span class="glyphicon glyphicon-remove"></span></a>
            </c:if>
          </div>
       </div> 
