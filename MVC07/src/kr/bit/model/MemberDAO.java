@@ -86,6 +86,14 @@ public class MemberDAO {
 	   }
 	   return idDouble;
    }
+   // 파일 삭제
+   public int memberDeleteFile(int num) {
+	   SqlSession session=sqlSessionFactory.openSession();
+	   int cnt = session.update("memberDeleteFile", num);
+	   session.commit();
+	   session.close();
+	   return cnt;
+   }
 }
 
 
