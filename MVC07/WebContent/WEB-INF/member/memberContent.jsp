@@ -17,8 +17,27 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
 <script type="text/javascript">
    function update(){
-	  document.form1.action="<c:url value='/memberUpdate.do'/>"; 
-	  document.form1.submit();
+	   if($("#file").val()!=''){ // 파일이 첨부가 된 경우...
+  		 var formData=new FormData();
+  	     formData.append("file", $("input[name=file]")[0].files[0]);
+  		 $.ajax({
+  			 url : "<c:url value='/fileAdd.do'/>", // fileAdd.do(파일업로드)
+  			 type : "post",
+  			 data : formData,
+  			 processData : false,
+  			 contentType : false,
+  			 success : function(data){  //업로드된 실재파일 이름을 전달 받기
+  				// alert(data);
+  				$('#filename').val(data);  
+  			    document.form1.action="<c:url value='/memberUpdate.do'/>?mode=fupdate"; // text데이터를 저장하는 부분
+  			    document.form1.submit();//num, age, email, phone, filename
+  			 },
+  			 error : function(){ alert("error"); }
+  		 });    		 
+  	 }else{ // 파일이 첨부 되지 않은 경우...
+  		 document.form1.action="<c:url value='/memberUpdate.do'/>?mode=update"; 
+		 document.form1.submit();//num, age, email, phone, X
+  	 }
    }
    function frmreset(){
 	  document.form1.reset();
@@ -53,6 +72,7 @@
     <div class="panel-body">
     <form id="form1" name="form1" class="form-horizontal" method="post">
       <input type="hidden" name="num" value="${vo.num}"/>
+      <input type="hidden" name="filename" id="filename" value=""/>
       <div class="form-group">
          <label class="control-label col-sm-2">번호:</label>
          <div class="col-sm-10">
